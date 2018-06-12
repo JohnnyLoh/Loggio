@@ -4,12 +4,20 @@
 
 .alert {
   margin: 0;
+  padding: 0;
   text-align: center;
   color: white;
 }
 .alert-info {
   background: $green;
+  padding: 0;
 }
 .alert-warning {
   background: $red;
+  padding: 0;
+}
+
+.notice {
+  margin: 0;
+  padding: 0;
 }
