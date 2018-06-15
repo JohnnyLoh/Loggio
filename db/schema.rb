@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_12_091646) do
+ActiveRecord::Schema.define(version: 2018_06_15_164338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assigned_teams", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_assigned_teams_on_team_id"
+    t.index ["user_id"], name: "index_assigned_teams_on_user_id"
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
@@ -37,8 +46,22 @@ ActiveRecord::Schema.define(version: 2018_06_12_091646) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.integer "password"
+    t.boolean "admin"
+    t.integer "handy_nr"
+    t.bigint "team_id"
+    t.bigint "assigned_team_id"
+    t.index ["assigned_team_id"], name: "index_users_on_assigned_team_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
+  add_foreign_key "assigned_teams", "teams"
+  add_foreign_key "assigned_teams", "users"
+  add_foreign_key "users", "assigned_teams"
+  add_foreign_key "users", "teams"
 end
