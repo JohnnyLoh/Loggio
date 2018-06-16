@@ -43,4 +43,18 @@ AssignedTeam.create(team_id: 2, user_id: 8)
 AssignedTeam.create(team_id: 2, user_id: 9)
 AssignedTeam.create(team_id: 2, user_id: 4)
 
+puts "Assign User to Team"
+
+Team.all[0].users << User.all[0]
+Team.all[0].users << User.all[1]
+Team.all[0].users << User.all[2]
+Team.all[0].users << User.all[3]
+
+Team.all[1].users << User.all[4]
+Team.all[1].users << User.all[5]
+Team.all[1].users << User.all[6]
+Team.all[1].users << User.all[7]
+Team.all[1].users << User.all[8]
+Team.all[1].users << User.all[3]
+
 puts "SEED FINISHED"

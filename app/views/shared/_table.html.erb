@@ -9,16 +9,13 @@
   </thead>
   <tbody>
     <% @users = User.all %>
+    <% @users.each do |user| %>
     <tr>
-      <td>TFBGA</td>
-      <td>24-Ball Thin Fine Pitch Ball Grid Array</td>
-      <td>24</td>
-      <td>6x8 mm</td>
-      <td>C04-0199</td>
-      <td>TD</td>
-      <td>A</td>
-      <td>
-      <a href="http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en595877"> View Details</a></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.username %></td>
+      <td><%= user.handy_nr %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
