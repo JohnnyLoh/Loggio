@@ -20,6 +20,7 @@ gem 'webpacker'
 # Added gems
 gem 'pundit'
 gem 'devise'
+gem 'jquery-tablesorter'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

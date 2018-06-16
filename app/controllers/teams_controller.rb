@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   def index
     @team = policy_scope(Team).order(created_at: :asc)
-    # @team = Team.all
+    @user = User.all
     authorize @team
   end
 end
