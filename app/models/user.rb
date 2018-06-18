@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :assigned_teams
-  has_many :teams, through: :assigned_teams
+  has_many :teams, through: :assigned_teams, dependent: :destroy
+
+  has_many :created_routes, class_name: 'Route'
 end

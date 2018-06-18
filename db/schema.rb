@@ -52,16 +52,10 @@ ActiveRecord::Schema.define(version: 2018_06_15_164338) do
     t.integer "password"
     t.boolean "admin"
     t.integer "handy_nr"
-    t.bigint "team_id"
-    t.bigint "assigned_team_id"
-    t.index ["assigned_team_id"], name: "index_users_on_assigned_team_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   add_foreign_key "assigned_teams", "teams"
   add_foreign_key "assigned_teams", "users"
-  add_foreign_key "users", "assigned_teams"
-  add_foreign_key "users", "teams"
 end
