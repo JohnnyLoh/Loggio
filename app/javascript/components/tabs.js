@@ -1,29 +1,38 @@
-function ClickTab() {
-  var tab = document.querySelector('.tab');
-  var content = document.querySelector('.tab-content')
-  var currenttab = tab[0]
-  currenttab.classList.add('active');
-  console.log(tab)
 
-  if (tab) {
-    tab.forEach(function(element) {
-      element.addEventListener('click', () => {
-        element.classList.add('active');
-        tab.forEach(function(element){
-          console.log(element.classList)
-          if (element.classList === "tab active") {
-            element.classList.remove("active")
-          }
-        }
-      content.innerHTML = `<%= render 'shared/table', currentteam: team %>`
-      });
-    }
-  }
+var tablinks = document.getElementsByClassName("tablinks");
+
+for (var n = 0; n < tablinks.length; n += 1) {
+  tablinks[n].addEventListener("click", function (event) {
+    var teamName = event.srcElement.innerText.toLowerCase();
+    openTeam(event, teamName)
+  });
 }
 
-ClickTab()
+function openTeam(evt, teamNm) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
 
-// export { ClickTab };
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    var tab = document.getElementById(teamNm)
+    console.log(teamNm)
+    console.log(tab)
+    tab.style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+export { openTeam };
 
 
 

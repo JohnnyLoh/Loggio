@@ -26,22 +26,22 @@ users << User.create(first_name: "Stefano", last_name:"Stadlinger", username: "S
 users << User.create(first_name: "Klaus", last_name:"Hauer", username: "Klaus", password: 123456, admin: false,  email: "klaus@hotmail.com", handy_nr: 06601234567)
 users << User.create(first_name: "Maximilian", last_name:"Salzbrunn", username: "Maxi", password: 123456, admin: false,  email: "maxi@hotmail.com", handy_nr: 06601234567)
 
-puts "Assign Team and Users"
+# puts "Assign Team and Users"
 
-# OwnedTeam.create(team_id: 1, user_id: 4)
-# OwnedTeam.create(team_id: 2, user_id: 4)
+# # OwnedTeam.create(team_id: 1, user_id: 4)
+# # OwnedTeam.create(team_id: 2, user_id: 4)
 
-AssignedTeam.create(team_id: 1, user_id: 1)
-AssignedTeam.create(team_id: 1, user_id: 2)
-AssignedTeam.create(team_id: 1, user_id: 3)
-AssignedTeam.create(team_id: 1, user_id: 4)
+# AssignedTeam.create(team_id: 1, user_id: 1)
+# AssignedTeam.create(team_id: 1, user_id: 2)
+# AssignedTeam.create(team_id: 1, user_id: 3)
+# AssignedTeam.create(team_id: 1, user_id: 4)
 
-AssignedTeam.create(team_id: 2, user_id: 5)
-AssignedTeam.create(team_id: 2, user_id: 6)
-AssignedTeam.create(team_id: 2, user_id: 7)
-AssignedTeam.create(team_id: 2, user_id: 8)
-AssignedTeam.create(team_id: 2, user_id: 9)
-AssignedTeam.create(team_id: 2, user_id: 4)
+# AssignedTeam.create(team_id: 2, user_id: 5)
+# AssignedTeam.create(team_id: 2, user_id: 6)
+# AssignedTeam.create(team_id: 2, user_id: 7)
+# AssignedTeam.create(team_id: 2, user_id: 8)
+# AssignedTeam.create(team_id: 2, user_id: 9)
+# AssignedTeam.create(team_id: 2, user_id: 4)
 
 puts "Assign User to Team"
 

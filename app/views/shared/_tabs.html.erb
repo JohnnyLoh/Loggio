@@ -1,12 +1,38 @@
-<div class="tabs">
-  <%= render 'shared/tab', team: "Militär"%>
-  <%= render 'shared/tab', team: "Lacrosse"%>
-  <%= render 'shared/tab', team: "Family"%>
-  <%= render 'shared/tab', team: "Friends"%>
+<div class="tab">
+  <% team.each do |t| %>
+  <button class="tablinks">
+      <h3><%= t.name.capitalize %></h3>
+      <i class="fas fa-columns"></i>
+  </button>
+  <% end %>
 </div>
 
-<div class="tabs tabs-content-container">
-  <div class="tab-content active">
-    <%= render 'shared/table', team: "Militär"%>
-  </div>
+<div class="tab tabs-content-container">
+  <% team.each do |t| %>
+    <div class="tab-content active" id=<%=t.name%>>
+      <%#= render 'shared/table', current_team: t%>
+      <table id="indextable">
+        <thead>
+          <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+              <th>HandyNr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users = t.users %>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.username %></td>
+            <td><%= user.handy_nr %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <span onclick="this.parentElement.style.display='none'"><i class="far fa-eye-slash"></i></span>
+    </div>
+  <% end %>
 </div>

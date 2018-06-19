@@ -7,13 +7,15 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 import 'bootstrap';
-import "../components/tabs"
-import "../components/tablesort"
-
 console.log('Hello World from Webpacker')
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-initUpdateNavbarOnScroll();
-
+import { loadDynamicBannerText } from '../components/banner';
 import { bindSweetAlertButtonDemo } from '../components/banner';
+import { openTeam } from '../components/tabs';
+
 bindSweetAlertButtonDemo();
+initUpdateNavbarOnScroll();
+// openTab();
+
+

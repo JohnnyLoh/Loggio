@@ -8,4 +8,5 @@ environment.plugins.prepend('Provide',
     jQuery: 'jquery'
   })
 )
+
 module.exports = environment
