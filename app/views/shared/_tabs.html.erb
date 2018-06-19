@@ -2,7 +2,6 @@
   <% team.each do |t| %>
   <button class="tablinks">
       <h3><%= t.name.capitalize %></h3>
-      <i class="fas fa-columns"></i>
   </button>
   <% end %>
 </div>
@@ -28,6 +27,9 @@
             <td><%= user.last_name %></td>
             <td><%= user.username %></td>
             <td><%= user.handy_nr %></td>
+            <td><%= link_to teams_path do %>
+                <i class="fas fa-columns"></i>
+            <% end %></td>
           </tr>
           <% end %>
         </tbody>

@@ -3,6 +3,7 @@ var tablinks = document.getElementsByClassName("tablinks");
 
 for (var n = 0; n < tablinks.length; n += 1) {
   tablinks[n].addEventListener("click", function (event) {
+    console.log(event)
     var teamName = event.srcElement.innerText.toLowerCase();
     openTeam(event, teamName)
   });
