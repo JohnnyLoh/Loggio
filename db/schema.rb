@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_15_164338) do
+ActiveRecord::Schema.define(version: 2018_06_19_140442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 2018_06_15_164338) do
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_assigned_teams_on_team_id"
     t.index ["user_id"], name: "index_assigned_teams_on_user_id"
+  end
+
+  create_table "columns", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "position"
+    t.boolean "shared", default: false
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_columns_on_team_id"
+    t.index ["user_id"], name: "index_columns_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -58,4 +71,6 @@ ActiveRecord::Schema.define(version: 2018_06_15_164338) do
 
   add_foreign_key "assigned_teams", "teams"
   add_foreign_key "assigned_teams", "users"
+  add_foreign_key "columns", "teams"
+  add_foreign_key "columns", "users"
 end

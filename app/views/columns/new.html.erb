@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Create new column</h1>
+
+  <%= simple_form_for(@column) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.label 'Public?' %>
+    <%= f.input_field :shared, as: :radio_buttons %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+

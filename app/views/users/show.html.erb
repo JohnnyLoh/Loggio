@@ -1,3 +1,8 @@
-<h1>@user.name</h1>
+<h1>Hello <%= @user.first_name %> <%= @user.last_name  %></h1>
 <p>Find all Columns of user</p>
 <%= link_to "Create column", new_column_path, class: "btn btn-primary" %>
+
+<h2>Your teams:</h2>
+<% @user.teams.each do |team| %>
+  <%= team.name.capitalize %>
+<% end %>

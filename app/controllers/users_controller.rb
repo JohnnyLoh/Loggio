@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     # @user = User.find(params[:id])
     @user = current_user
     authorize @user
-    @team = policy_scope(Route).where(@user_id)
   end
 
   def edit

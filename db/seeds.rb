@@ -18,7 +18,7 @@ users = []
 users << User.create(first_name: "Alexander", last_name:"Thurn", username: "Sunny", password: 123456, admin: false,  email: "sunny@hotmail.com", handy_nr: 06601234567)
 users << User.create(first_name: "Georg", last_name:"Mautner-Markhof", username: "Gurli", password: 123456, admin: false,  email: "gurli@hotmail.com", handy_nr: 06601234567)
 users << User.create(first_name: "Alfred", last_name:"Wolff", username: "Alf", password: 123456, admin: false,  email: "alf@hotmail.com", handy_nr: 06601234567)
-users << User.create(first_name: "Johannes", last_name:"Lohner", username: "Lohnny", password: 123456, admin: true,  email: "Lohnny@hotmail.com", handy_nr: 06601234567)
+users << User.create(first_name: "Johannes", last_name:"Lohner", username: "Lohnny", password: 123456, admin: true,  email: "johnny@lohgio.com", handy_nr: 06601234567)
 
 users << User.create(first_name: "Rin", last_name:"Tacho", username: "Rinti", password: 123456, admin: false,  email: "rinti@hotmail.com", handy_nr: 06601234567)
 users << User.create(first_name: "Adrian", last_name:"Balasch", username: "Adrian", password: 123456, admin: false,  email: "adrian@hotmail.com", handy_nr: 06601234567)
