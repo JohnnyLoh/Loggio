@@ -1,0 +1,11 @@
+<% columns.each do |c| %>
+  <div class="card card-block card-primary card-inverse" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+    <div class="card-category"><%= c.name %></div>
+    <div class="card-description">
+      <h2><%= c.description %></h2>
+      <p><%= c.shared %></p>
+    </div>
+    <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+    <a class="card-link" href="#" ></a>
+  </div>
+<% end %>

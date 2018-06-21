@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_140442) do
+ActiveRecord::Schema.define(version: 2018_06_19_144517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assigned_columns", force: :cascade do |t|
+    t.bigint "team_id"
+    t.bigint "column_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["column_id"], name: "index_assigned_columns_on_column_id"
+    t.index ["team_id"], name: "index_assigned_columns_on_team_id"
+  end
 
   create_table "assigned_teams", force: :cascade do |t|
     t.bigint "user_id"
@@ -69,6 +78,8 @@ ActiveRecord::Schema.define(version: 2018_06_19_140442) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "assigned_columns", "columns"
+  add_foreign_key "assigned_columns", "teams"
   add_foreign_key "assigned_teams", "teams"
   add_foreign_key "assigned_teams", "users"
   add_foreign_key "columns", "teams"

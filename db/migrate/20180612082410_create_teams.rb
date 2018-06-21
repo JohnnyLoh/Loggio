@@ -6,6 +6,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :photo
       t.references :user, foreign_key: true, index: true
+      t.references :column, foreign_key: true, index: true
 
       t.timestamps
     end

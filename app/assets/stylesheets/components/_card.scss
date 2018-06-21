@@ -1,10 +1,13 @@
 .card {
-  height: 175px;
+  width: 280px;
+  height: 600px;
+  flex-grow: 1.5;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
+  margin: 20px;
 }
 .card-user {
   position: absolute;
@@ -46,3 +49,13 @@
 .card-link:hover {
   opacity: 0.1;
 }
+
+.card-block {
+    min-height: 220px;
+    margin-bottom: 15px;
+}
+
+.card-row {
+  display: flex
+}
+

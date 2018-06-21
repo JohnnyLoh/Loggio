@@ -1,0 +1,5 @@
+function replaceResults() {
+  const newColumns = `<%= render 'cards/cards', columns: @columns%>`
+  document.querySelector("#row-for-columns").innerHTML = newColumns
+}
+replaceResults()

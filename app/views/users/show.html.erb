@@ -1,8 +1,31 @@
-<h1>Hello <%= @user.first_name %> <%= @user.last_name  %></h1>
+<%= p "users/show view page:" %>
+<%= p @columns %>
+<%= p "end user/show view page" %>
+
+<div id="user-show-container">
+<h4>Hello <%= current_user.first_name %> <%= current_user.last_name  %></h4>
 <p>Find all Columns of user</p>
 <%= link_to "Create column", new_column_path, class: "btn btn-primary" %>
 
 <h2>Your teams:</h2>
-<% @user.teams.each do |team| %>
-  <%= team.name.capitalize %>
+<% current_user.teams.each do |team| %>
+  <p><%= team.name.capitalize %></p>
 <% end %>
+  <div class="container">
+    <div class="row">
+      <%= form_tag filtered_teams_path, method: "get", class: "form-inline", remote: true do %>
+        <%= label_tag "Team" %>
+        <%= select_tag :team, options_for_select(current_user.teams.collect{|u| [u.name]}.push("All Teams"))%>
+        <%= submit_tag "Apply", name: nil, class:"btn btn-primary"%>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="grid-container">
+  <div class="row card-row" id="row-for-columns">
+    <%= render 'cards/cards', columns: @columns%>
+  </div>
+</div>

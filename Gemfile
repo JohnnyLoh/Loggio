@@ -11,6 +11,7 @@ gem 'redis'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
+gem 'bootstrap', '~> 4.1.1'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'sass-rails'
 gem 'simple_form'
@@ -20,7 +21,8 @@ gem 'webpacker'
 # Added gems
 gem 'pundit'
 gem 'devise'
-gem 'jquery-tablesorter'
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.12.9'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

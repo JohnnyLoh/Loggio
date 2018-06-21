@@ -7,14 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-puts "Seeding started"
-puts "Seed team Militär"
+puts "STARTING SEED"
+
+puts "Creating teams ... "
+
 Team.create(name: "militär", position: 0, description: "Jgb NÖ - Miliz", photo: "")
 Team.create(name: "lacrosse", position: 0, description: "Austrian Lacrosse National Team", photo: "")
 
-puts "Seeds users"
-users = []
+puts "Creating users ... "
 
+users = []
 users << User.create(first_name: "Alexander", last_name:"Thurn", username: "Sunny", password: 123456, admin: false,  email: "sunny@hotmail.com", handy_nr: 06601234567)
 users << User.create(first_name: "Georg", last_name:"Mautner-Markhof", username: "Gurli", password: 123456, admin: false,  email: "gurli@hotmail.com", handy_nr: 06601234567)
 users << User.create(first_name: "Alfred", last_name:"Wolff", username: "Alf", password: 123456, admin: false,  email: "alf@hotmail.com", handy_nr: 06601234567)
@@ -26,24 +28,7 @@ users << User.create(first_name: "Stefano", last_name:"Stadlinger", username: "S
 users << User.create(first_name: "Klaus", last_name:"Hauer", username: "Klaus", password: 123456, admin: false,  email: "klaus@hotmail.com", handy_nr: 06601234567)
 users << User.create(first_name: "Maximilian", last_name:"Salzbrunn", username: "Maxi", password: 123456, admin: false,  email: "maxi@hotmail.com", handy_nr: 06601234567)
 
-# puts "Assign Team and Users"
-
-# # OwnedTeam.create(team_id: 1, user_id: 4)
-# # OwnedTeam.create(team_id: 2, user_id: 4)
-
-# AssignedTeam.create(team_id: 1, user_id: 1)
-# AssignedTeam.create(team_id: 1, user_id: 2)
-# AssignedTeam.create(team_id: 1, user_id: 3)
-# AssignedTeam.create(team_id: 1, user_id: 4)
-
-# AssignedTeam.create(team_id: 2, user_id: 5)
-# AssignedTeam.create(team_id: 2, user_id: 6)
-# AssignedTeam.create(team_id: 2, user_id: 7)
-# AssignedTeam.create(team_id: 2, user_id: 8)
-# AssignedTeam.create(team_id: 2, user_id: 9)
-# AssignedTeam.create(team_id: 2, user_id: 4)
-
-puts "Assign User to Team"
+puts "Assigning Users to Team ... "
 
 Team.all[0].users << User.all[0]
 Team.all[0].users << User.all[1]
@@ -56,5 +41,25 @@ Team.all[1].users << User.all[6]
 Team.all[1].users << User.all[7]
 Team.all[1].users << User.all[8]
 Team.all[1].users << User.all[3]
+
+puts "Creating Columns ... "
+
+columns = []
+columns << Column.create(name: "Books", description: "Favourt books ever read", shared: false, user_id: 4)
+columns << Column.create(name: "Sport", description: "Fitness", shared: true, user_id: 4)
+columns << Column.create(name: "Special training", description: "extra training courses", shared: true, user_id: 4)
+columns << Column.create(name: "Training dates", description: "training dates", shared: true, user_id: 4)
+
+puts "Assign Team to Columns ... "
+
+columns[0].teams << Team.all[0,1]
+columns[1].teams << Team.all
+columns[2].teams << Team.where(name: "militär")
+columns[3].teams << Team.where(name: "lacrosse")
+
+puts " Printing Users ... "
+users.each do |user|
+  puts "#{user.id} = #{user.first_name}"
+end
 
 puts "SEED FINISHED"

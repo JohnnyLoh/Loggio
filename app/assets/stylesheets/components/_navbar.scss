@@ -8,7 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: transparent;
+  // background-color: transparent;
+  opacity: 0.8;
   transition: 0.5s background-color ease;
 }
 
@@ -66,7 +67,8 @@
   padding: 10px 20px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
-  background: transparent !important;
+  // background: transparent !important;
+  opacity: 0.5;
   color: black !important;
 }
 .navbar-wagon-dropdown-menu:before {
@@ -80,4 +82,14 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+img {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+img:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
 }

@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     resources :cards, except: [:index, :show] do
     end
   end
+
+  get 'filtered_teams', to: 'filters#index'
 end
