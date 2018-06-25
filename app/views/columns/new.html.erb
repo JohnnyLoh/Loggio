@@ -4,8 +4,12 @@
   <%= simple_form_for(@column) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.label 'Public?' %>
+    <%= f.label "Make Public ? " %>
     <%= f.input_field :shared, as: :radio_buttons %>
+    <%# current_user.teams.each do |team| %>
+      <%= f.label "Add to ? "%>
+      <%= f.collection_check_boxes :team_ids, Team.all, :id, :name%>
+    <%# end %>
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>

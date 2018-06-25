@@ -4,13 +4,54 @@
   padding: 5px;
   overflow-y: hidden;
   overflow-x: scroll;
-  margin-top: 20px;
   width: 100%;
-  height: 600px;
+  height: 100%;
 }
 
-.user-show-container html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, a, em, img, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td {
-  margin: 15px;
-  padding: 0;
-  color: white;
+// .user-show-container html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, a, em, img, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td {
+//   // margin: 15px;
+//   padding: 0;
+//   color: white;
+// }
+
+.display-flex {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+.form-inline {
+  font-weight: normal !important;
+}
+
+#user-show-navbar {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+#user-show-navbar select {
+  color: black;
+  text-transform: capitalize;
+}
+
+#user-show-navbar p label select input a {
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+}
+
+.display-flex p {
+  margin: 0px;
+  padding: 5px 0px;
+  text-align: center;
+}
+
+.display-flex a input {
+  height: 22px;
 }

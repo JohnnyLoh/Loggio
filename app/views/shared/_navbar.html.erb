@@ -20,6 +20,7 @@
       <%= link_to "Dashboard", users_show_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%#= link_to "Home", routes_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Create Column", new_column_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <p>Hello <%= current_user.first_name %> <%= current_user.last_name  %></p>
       <div class="navbar-wagon-item">
       <div class="dropdown">
         <!-- <img  class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" <%#= cl_image_tag current_user.picture_url %> -->

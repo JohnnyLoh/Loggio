@@ -1,7 +1,7 @@
 .card {
   width: 280px;
-  height: 600px;
-  flex-grow: 1.5;
+  min-height: 200px;
+  // flex-grow: 1.5;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
@@ -18,21 +18,22 @@
 }
 .card-category {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  margin: 0px;
+}
+.card-description {
+  position: relative;
+  top: 60px;
+  margin: 0px 10px;
   font-size: 15px;
   text-transform: uppercase;
 }
-.card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-.card-description h2 {
+.card-category h2 {
   font-size: 24px;
+  margin: 10px;
 }
 .card-description p {
-  font-size: 14px;
+  font-size: 15px;
+  text-transform: uppercase;
   opacity: 0.7;
   font-weight: lighter;
 }
@@ -57,5 +58,25 @@
 
 .card-row {
   display: flex
+}
+
+#delete-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.card-not-shared {
+  box-shadow: inset 3px 3px 28px 1px rgba(0,0,0,0.75);
+  border-radius: 5px
+}
+
+.card-shared {
+  box-shadow: 3px 3px 20px 0px #f1d18a;
+  border-radius: 5px
+}
+
+.shared {
+  color: #f1d18a;
 }
 
