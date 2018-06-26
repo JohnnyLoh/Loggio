@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_144517) do
+ActiveRecord::Schema.define(version: 2018_06_25_214619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assigned_cards", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_assigned_cards_on_user_id"
+  end
 
   create_table "assigned_columns", force: :cascade do |t|
     t.bigint "team_id"
@@ -31,6 +38,15 @@ ActiveRecord::Schema.define(version: 2018_06_19_144517) do
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_assigned_teams_on_team_id"
     t.index ["user_id"], name: "index_assigned_teams_on_user_id"
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "columns", force: :cascade do |t|
@@ -78,10 +94,12 @@ ActiveRecord::Schema.define(version: 2018_06_19_144517) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "assigned_cards", "users"
   add_foreign_key "assigned_columns", "columns"
   add_foreign_key "assigned_columns", "teams"
   add_foreign_key "assigned_teams", "teams"
   add_foreign_key "assigned_teams", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "columns", "teams"
   add_foreign_key "columns", "users"
 end

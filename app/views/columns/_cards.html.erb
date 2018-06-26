@@ -1,0 +1,37 @@
+<% columns.each do |c| %>
+  <% if c.shared %>
+    <div class="card card-block card-primary card-inverse card-shared" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+      <div class="card-category shared"><h2><%= c.name %></h2></div>
+      <div class="card-description">
+        <p><%= c.description %></p>
+      </div>
+      <div>
+        <%= render 'columns/cards', columns: @columns%>
+      </div>
+      <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+      <!-- <a class="card-link" href="#" ></a> -->
+      <div id="delete-button">
+        <% if policy(c).destroy? %>
+          <%= link_to "", column_path(c), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="card card-block card-primary card-inverse card-not-shared" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+      <div class="card-category not-shared"><h2><%= c.name %></h2></div>
+      <div class="card-description">
+        <p><%= c.description %></p>
+      </div>
+      <div>
+        <%= render 'cards/cards', cards: @cards%>
+      </div>
+      <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+      <!-- <a class="card-link" href="#" ></a> -->
+      <div id="delete-button">
+        <% if policy(c).destroy? %>
+          <%= link_to "", column_path(c), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

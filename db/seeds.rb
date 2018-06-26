@@ -57,9 +57,19 @@ columns[1].teams << Team.all
 columns[2].teams << Team.where(name: "militär")
 columns[3].teams << Team.where(name: "lacrosse")
 
-puts " Printing Users ... "
-users.each do |user|
-  puts "#{user.id} = #{user.first_name}"
-end
+puts "Create Cards ... "
+
+cards = []
+cards << Card.create(name: "Säulen der Erde", description: "Ken Follet", user_id: 4)
+cards << Card.create(name: "Sternstunden der Menschheit", description: "Stefan Zweig",user_id: 4)
+cards << Card.create(name: "Liegestütz", description: "100", user_id: 4)
+cards << Card.create(name: "Push-ups", description: "7", user_id: 4)
+
+puts "Assign Column to Cards ... "
+
+cards[0].column = Column.where(name: "Books")
+cards[1].column = Column.where(name: "Books")
+cards[2].column = Column.where(name: "Special training")
+cards[3].column = Column.where(name: "Special training")
 
 puts "SEED FINISHED"
