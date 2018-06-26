@@ -41,11 +41,13 @@ ActiveRecord::Schema.define(version: 2018_06_25_214619) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "name"
     t.text "description"
+    t.bigint "user_id"
+    t.bigint "column_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["column_id"], name: "index_cards_on_column_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_214619) do
   add_foreign_key "assigned_columns", "teams"
   add_foreign_key "assigned_teams", "teams"
   add_foreign_key "assigned_teams", "users"
+  add_foreign_key "cards", "columns"
   add_foreign_key "cards", "users"
   add_foreign_key "columns", "teams"
   add_foreign_key "columns", "users"

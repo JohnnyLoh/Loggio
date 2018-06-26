@@ -60,16 +60,14 @@ columns[3].teams << Team.where(name: "lacrosse")
 puts "Create Cards ... "
 
 cards = []
-cards << Card.create(name: "Säulen der Erde", description: "Ken Follet", user_id: 4)
-cards << Card.create(name: "Sternstunden der Menschheit", description: "Stefan Zweig",user_id: 4)
-cards << Card.create(name: "Liegestütz", description: "100", user_id: 4)
-cards << Card.create(name: "Push-ups", description: "7", user_id: 4)
-
-puts "Assign Column to Cards ... "
-
-cards[0].column = Column.where(name: "Books")
-cards[1].column = Column.where(name: "Books")
-cards[2].column = Column.where(name: "Special training")
-cards[3].column = Column.where(name: "Special training")
+cards << Card.create(name: "Säulen der Erde", description: "Ken Follet", user_id: 4, column_id: 1)
+cards << Card.create(name: "Sternstunden der Menschheit", description: "Stefan Zweig",user_id: 4, column_id: 1)
+cards << Card.create(name: "Liegestütz", description: "100", user_id: 4, column_id: 2)
+cards << Card.create(name: "Push-ups", description: "7", user_id: 4, column_id: 2)
+cards << Card.create(name: "P80", description: "Pistole 80 Schiessen", user_id: 4, column_id: 3)
+cards << Card.create(name: "CRC", description: "Crowd and Riot control", user_id: 4, column_id: 3)
+cards << Card.create(name: "Gebirgsjäger", description: "Wattener Lizum", user_id: 4, column_id: 3)
+cards << Card.create(name: "Luftlandeuntersützung", description: "Black Hawk, Auguster Bell fliegen", user_id: 4, column_id: 3)
+cards << Card.create(name: "Dienstag Training", description: "19:30-21:30 im Hellas Kagran", user_id: 6, column_id: 4)
 
 puts "SEED FINISHED"

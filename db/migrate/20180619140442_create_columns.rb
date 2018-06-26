@@ -6,7 +6,7 @@ class CreateColumns < ActiveRecord::Migration[5.2]
       t.integer :position
       t.boolean :shared, default: false
 
-      # t.references :user, foreign_key: true, index: true
+      #t.references :user, foreign_key: true, index: true
       # t.references :team, foreign_key: true, index: true
 
       # validates :description, presence: true, length: { minimum: 5 }
