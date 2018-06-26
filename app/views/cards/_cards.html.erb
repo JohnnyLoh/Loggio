@@ -7,7 +7,7 @@
         </div>
         <div class="row card-owner">
           <p>Created by: <%= card.user.first_name %> <%= card.user.last_name %></p>
-          <div id="delete-button">
+          <div id="delete-button-card">
             <% if policy(card).destroy? %>
               <%= link_to "", column_card_path(current_column, card), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" %>
             <% end %>
