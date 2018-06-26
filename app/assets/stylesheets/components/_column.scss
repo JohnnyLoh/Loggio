@@ -1,58 +1,39 @@
-.card {
-  width: 200px;
-  max-height: 50px;
+.column {
+  width: 280px;
+  min-height: 200px;
   // flex-grow: 1.5;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
+  margin: 20px;
+  height: 100%;
 }
-// .card-user {
-//   position: absolute;
-//   right: 10px;
-//   top: 10px;
-//   width: 40px;
-//   border-radius: 50%;
-// }
-.card-category {
+.column-user {
   position: absolute;
-  margin: 0px 10px;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  border-radius: 50%;
 }
-.card-description {
+.column-category {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+}
+.column-description {
   position: relative;
-  top: 30px;
   margin: 0px 10px;
-  font-size: 12px;
+  // font-size: 15px;
 }
-
-.card-owner {
-  display: flex;
-  margin: 0px;
-}
-
-.card-owner p {
-  font-size: 10px;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-}
-
-.card-category h4 {
-  font-size: 12px;
-  margin: 5px;
-}
-.card-d-p p {
-  font-size: 15px;
-  margin: 0px;
+.column-category h2 {
+  font-size: 24px;
+  margin: 10px;
   padding: 0px;
 }
 
-
-.card-link {
+.column-link {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -62,16 +43,16 @@
   background: black;
   opacity: 0;
 }
-.card-link:hover {
+.column-link:hover {
   opacity: 0.1;
 }
 
-.card-block {
-    min-height: 70px;
+.column-block {
+    min-height: 220px;
     margin-bottom: 15px;
 }
 
-.card-row {
+.column-row {
   display: flex
 }
 
@@ -81,12 +62,12 @@
   right: 10px;
 }
 
-.card-not-shared {
+.column-not-shared {
   box-shadow: inset 3px 3px 28px 1px rgba(0,0,0,0.75);
   border-radius: 5px
 }
 
-.card-shared {
+.column-shared {
   box-shadow: 3px 3px 20px 0px #f1d18a;
   border-radius: 5px
 }
@@ -94,3 +75,4 @@
 .shared {
   color: #f1d18a;
 }
+
