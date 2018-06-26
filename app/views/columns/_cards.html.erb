@@ -1,4 +1,4 @@
-<% columns.each do |c| %>
+<% @columns.each do |c| %>
   <% if c.shared %>
     <div class="card card-block card-primary card-inverse card-shared" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
       <div class="card-category shared"><h2><%= c.name %></h2></div>
@@ -6,7 +6,7 @@
         <p><%= c.description %></p>
       </div>
       <div>
-        <%= render 'columns/cards', columns: @columns%>
+        <%= render 'cards/cards', current_column: c%>
       </div>
       <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
       <!-- <a class="card-link" href="#" ></a> -->
@@ -23,7 +23,7 @@
         <p><%= c.description %></p>
       </div>
       <div>
-        <%= render 'cards/cards', cards: @cards%>
+        <%= render 'cards/cards', current_column: c%>
       </div>
       <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
       <!-- <a class="card-link" href="#" ></a> -->
