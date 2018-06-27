@@ -10,7 +10,7 @@
           <p><%= c.description %></p>
         </div>
         <div class="cards-box">
-          <%= render 'cards/cards', current_column: c%>
+          <%= render 'shared/cards', current_column: c%>
         </div>
       </div>
 
@@ -25,21 +25,25 @@
     </div>
   <% else %>
     <div class="column column-block column-primary column-inverse column-not-shared" style="background-image: linear-gradient(rgba(1, 1, 1, 0.06), rgba(1, 1, 1, 0.35));">
-      <div class="column-category not-shared"><h2><%= c.name %></h2></div>
       <div class="column-description">
-        <p><%= c.description %></p>
+        <div class="column-category not-shared">
+          <h2><%= c.name %></h2>
+          <p> </p>
+        </div>
+        <div class="column-txt">
+          <p><%= c.description %></p>
+        </div>
         <div class="cards-box">
-          <%= render 'cards/cards', current_column: c%>
+          <%= render 'shared/cards', current_column: c%>
         </div>
       </div>
+
       <img class="column-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
       <!-- <a class="card-link" href="#" ></a> -->
-      <div id="delete-button-column">
-        <% if policy(c).destroy? %>
-          <%= link_to "", column_path(c), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" %>
-        <% end %>
-      </div>
-      <div id="ad-card-button">
+        <div id="button-column">
+          <% if policy(c).destroy? %>
+            <%= link_to "", column_path(c), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" %>
+          <% end %>
           <%= link_to "", new_column_card_path(c), class:"fas fa-plus" %>
         </div>
     </div>

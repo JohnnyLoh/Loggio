@@ -1,9 +1,17 @@
 <div class="tab">
   <% team.each do |t| %>
   <button class="tablinks">
-      <h3><%= t.name.capitalize %></h3>
+    <h3><%= t.name.capitalize %></h3>
+    <div id="team-show-link">
+      <%= link_to "", team_path(t), class:"fas fa-columns" %>
+    </div>
   </button>
   <% end %>
+  <button class="tabadd">
+    <div id="team-show-link">
+      <%= link_to "",  new_team_path, class:"fas fa-plus" %>
+    </div>
+  </button>
 </div>
 
 <div class="tab tabs-content-container">

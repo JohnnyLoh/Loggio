@@ -2,6 +2,7 @@ class ColumnsController < ApplicationController
   def new
     @column = Column.new
     authorize @column
+    raise
   end
 
   def create

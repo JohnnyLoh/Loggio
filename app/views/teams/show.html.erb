@@ -1,0 +1,34 @@
+<h2><%= @team.name.capitalize %></h2>
+<div id="table-scroll" class="table-scroll"">
+  <div class="table-wrap">
+    <table class="main-table">
+      <thead>
+        <tr>
+            <th class="fixed-side" scope="col">Teammates</th>
+            <% @team.columns.each do |column| %>
+              <th scope="col"><%= column.name %></th>
+            <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @team.users.each do |user| %>
+          <tr>
+            <th class="fixed-side"><%= user.username %></th>
+            <% @cards = [] %>
+            <% @team.columns.each do |column| %>
+              <% @cards << Card.where(column_id: column.id, user_id: user.id)%>
+              <td>
+                <% @cards.each do |card| %>
+                <% if !card[0].nil? %>
+                    <%= card[0].name %>: <%= card[0].description%>
+                  <% end %>
+                <% end %>
+              </td>
+              <% @cards = [] %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

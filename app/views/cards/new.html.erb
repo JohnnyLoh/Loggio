@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Create new card</h1>
+
+  <%= simple_form_for [@column, @card] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.label "Tag teammates "%>
+    <%= f.input_field :users, collection: @users, as: :check_boxes, label_method: :username,  label: false, value_method: :id, input_html: { multiple: true } %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
