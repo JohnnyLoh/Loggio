@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :cards, except: [:index, :show] do
     end
   end
-
+  get ':column_id/add_team', to: 'columns#addTeam'
   get 'filtered_teams', to: 'filters#index'
+
 end

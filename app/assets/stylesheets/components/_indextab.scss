@@ -1,8 +1,16 @@
 .tab {
-  background: #032a33;
   display: flex;
   padding: 20px 20px 0 20px;
+}
+.team-tab{
+  background: #032a33;
+  overflow-x: scroll;
   overflow: hidden;
+  overflow-x: scroll;
+}
+
+.tab-display {
+  display: flex;
 }
 .tab button {
   color: white;
@@ -85,7 +93,15 @@
 #team-show-link {
   margin: auto 20px;
 }
+
+#team-delete-link {
+  margin: auto 0px;
+}
 .tabadd {
   background: #255965;
+}
+
+.tabsrow {
+  overflow-x: scroll;
 }
 

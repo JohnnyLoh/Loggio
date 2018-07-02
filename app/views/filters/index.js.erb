@@ -1,5 +1,5 @@
 function replaceResults() {
-  const newColumns = `<%= render 'cards/cards', columns: @columns%>`
+  const newColumns = `<%= render 'columns/columns', columns: @columns%>`
   document.querySelector("#row-for-columns").innerHTML = newColumns
   const teamInfo = document.getElementById('team-info');
   teamInfo.innerHTML = `<%= @columns[0].teams[0].name.capitalize %>`

@@ -1,48 +1,52 @@
-<div class="tab">
-  <% team.each do |t| %>
-  <button class="tablinks">
-    <h3><%= t.name.capitalize %></h3>
-    <div id="team-show-link">
-      <%= link_to "", team_path(t), class:"fas fa-columns" %>
-    </div>
-  </button>
-  <% end %>
-  <button class="tabadd">
-    <div id="team-show-link">
-      <%= link_to "",  new_team_path, class:"fas fa-plus" %>
-    </div>
-  </button>
-</div>
 
-<div class="tab tabs-content-container">
-  <% team.each do |t| %>
-    <div class="tab-content active" id=<%=t.name%>>
-      <%#= render 'shared/table', current_team: t%>
-      <table id="indextable">
-        <thead>
-          <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-              <th>HandyNr</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users = t.users %>
-          <% @users.each do |user| %>
-          <tr>
-            <td><%= user.first_name %></td>
-            <td><%= user.last_name %></td>
-            <td><%= user.username %></td>
-            <td><%= user.handy_nr %></td>
-            <td><%= link_to teams_path do %>
-                <i class="fas fa-columns"></i>
-            <% end %></td>
-          </tr>
+  <div class="team-tab tab">
+    <% team.each do |t| %>
+    <button class="tablinks">
+      <h3><%= t.name.capitalize %></h3>
+      <div id="team-show-link">
+        <%= link_to "", team_path(t), class:"fas fa-columns" %>
+      </div>
+      <% if policy(t).destroy? %>
+        <div id="team-delete-link">
+          <%= link_to team_path(t), method: :delete, data: {:confirm => 'Are you sure?'} do %>
+            <i class="far fa-trash-alt"></i>
           <% end %>
-        </tbody>
-      </table>
-      <span onclick="this.parentElement.style.display='none'"><i class="far fa-eye-slash"></i></span>
-    </div>
-  <% end %>
+        </div>
+      <% end %>
+    </button>
+    <% end %>
+  </div>
+
+  <div class="tabs-content-container">
+    <% team.each do |t| %>
+      <div class="tab-content active" id=<%=t.name%>>
+        <%#= render 'shared/table', current_team: t%>
+        <table id="indextable">
+          <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>HandyNr</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users = t.users %>
+            <% @users.each do |user| %>
+            <tr>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.username %></td>
+              <td><%= user.handy_nr %></td>
+              <td><%= link_to teams_path do %>
+                  <i class="fas fa-columns"></i>
+              <% end %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <span onclick="this.parentElement.style.display='none'"><i class="far fa-eye-slash"></i></span>
+      </div>
+    <% end %>
+  </div>
 </div>

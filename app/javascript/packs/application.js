@@ -13,6 +13,7 @@ import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { loadDynamicBannerText } from '../components/banner';
 import { bindSweetAlertButtonDemo } from '../components/banner';
 import { openTeam } from '../components/tabs';
+import { openColumn } from '../components/tabs';
 
 bindSweetAlertButtonDemo();
 initUpdateNavbarOnScroll();

@@ -4,6 +4,12 @@ class UsersController < ApplicationController
     @user = current_user
     @columns = Column.where(user: current_user)
     authorize @user
+
+    @userteams = []
+    @assTeams = AssignedTeam.where(user_id: @user.id)
+    @assTeams.each do |aTea|
+      @userteams << aTea.team
+    end
   end
 
   def edit

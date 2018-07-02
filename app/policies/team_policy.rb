@@ -20,4 +20,8 @@ class TeamPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def delete?
+    record.user == user
+  end
 end

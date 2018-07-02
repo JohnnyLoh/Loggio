@@ -4,6 +4,8 @@
   <%= simple_form_for(@team) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
+    <%= f.label "Pick admins: "%>
+    <%= f.input_field :admins, collection: @users, as: :check_boxes, label_method: :username,  label: false, value_method: :id, input_html: { multiple: true } %>
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>

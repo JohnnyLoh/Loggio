@@ -1,3 +1,77 @@
+// Tab
+.column-tab {
+  padding: 20px 20px 0 20px;
+}
+.column-tab-display {
+  display: flex;
+}
+.column-tab button {
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+.column-tab button i{
+  margin: auto 10px;
+
+}
+.column-tab button:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.6;
+}
+.column-tab button.active {
+  background: #f1d18a;
+  color: black;
+}
+// .column-tab h3 {
+//   font-size: 17px;
+//   font-weight: bold;
+//   margin-top: 0;
+//   padding: 15px 0 15px 15px;
+//   width: 100%;
+//   text-align: left;
+//   margin-bottom: 0;
+// }
+.column-tab p {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 0;
+}
+.column-tablinks {
+  background: #255965;
+  flex: 0 0 25%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  // margin: 0px 20px;
+  padding: 5px 0;
+
+}
+.column-tablinks{
+  margin: auto 0px;
+}
+.column-tabs-content-container {
+  // height: 20vh;
+  // display: flex;
+  // justify-content: space-between;
+  padding: 0 20px 20px 20px;
+}
+.column-tab-content {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 100%;
+  background: #032A33;
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+.column-tab-content.active{
+  background: #f1d18a;
+}
+
+
+
 .column {
   width: 280px;
   min-height: 200px;
@@ -13,6 +87,10 @@
 
 .column-txt {
   margin: 2px;
+}
+
+.col-form-label {
+  display: none;
 }
 
 .column-user {
@@ -72,10 +150,10 @@
 //   justify-content: space-between;
 // }
 
-#button-column {
-  margin: 10px 10px;
-  justify-content: space-between;
-  display: flex;
+#button-column-delete {
+  margin: auto;
+  font-size: 20px;
+  position: relative;
 }
 
 
@@ -92,5 +170,13 @@
 
 .shared {
   color: #f1d18a;
+}
+
+.column-custom {
+  display: flex;
+}
+
+.hide{
+  display: none;
 }
 

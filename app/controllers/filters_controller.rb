@@ -1,21 +1,28 @@
 class FiltersController < ApplicationController
   def index
-    p params
     team = params[:team]
     @columns = []
-
-    policy_scope(Column).where(user_id: current_user.id).each do |colm|
-      colm.teams.each do |tms|
-        if tms.name == team
-          @columns << colm
-          p colm
+    if team == "All Teams"
+      policy_scope(Column).where(user_id: current_user.id).each do |colm|
+            @columns << colm
+      end
+    else
+      policy_scope(Column).where(user_id: current_user.id).each do |colm|
+        colm.teams.each do |tms|
+          if tms.name == team
+            @columns << colm
+          end
         end
       end
     end
 
-    p "filters controller:"
-    p @columns
-    p "end filters controler"
+    @user = current_user
+    @userteams = []
+    @assTeams = AssignedTeam.where(user_id: @user.id)
+    @assTeams.each do |aTea|
+      @userteams << aTea.team
+    end
+
 
     respond_to do |format|
       format.html { render "users/show", columns: @columns}
