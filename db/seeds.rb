@@ -13,6 +13,7 @@ puts "Creating teams ... "
 
 Team.create(name: "militär", position: 0, description: "Jgb NÖ - Miliz", photo: "")
 Team.create(name: "lacrosse", position: 0, description: "Austrian Lacrosse National Team", photo: "")
+Team.create(name: "Berkeley", position: 0, description: "Studium friends", photo: "")
 
 puts "Creating users ... "
 
@@ -28,19 +29,38 @@ users << User.create(first_name: "Stefano", last_name:"Stadlinger", username: "S
 users << User.create(first_name: "Klaus", last_name:"Hauer", username: "Klaus", password: 123456, admin: false,  email: "klaus@hotmail.com", handy_nr: 06601234567)
 users << User.create(first_name: "Maximilian", last_name:"Salzbrunn", username: "Maxi", password: 123456, admin: false,  email: "maxi@hotmail.com", handy_nr: 06601234567)
 
-puts "Assigning Users to Team ... "
+users << User.create(first_name: "Thorkil", last_name:"Klint", username: "Thorkil", password: 123456, admin: false,  email: "thorkil@hotmail.com", handy_nr: 06601234567)
+users << User.create(first_name: "Sebastian", last_name:"Naurier", username: "Seb", password: 123456, admin: false,  email: "sebastian@hotmail.com", handy_nr: 06601234567)
+users << User.create(first_name: "Micha", last_name:"Amsterdam", username: "Mich", password: 123456, admin: false,  email: "micha@hotmail.com", handy_nr: 06601234567)
 
-Team.all[0].users << User.all[0]
-Team.all[0].users << User.all[1]
-Team.all[0].users << User.all[2]
-Team.all[0].users << User.all[3]
+puts "Creating Assigned Teams ..."
 
-Team.all[1].users << User.all[4]
-Team.all[1].users << User.all[5]
-Team.all[1].users << User.all[6]
-Team.all[1].users << User.all[7]
-Team.all[1].users << User.all[8]
-Team.all[1].users << User.all[3]
+AssignedTeam.create(user_id: 1 ,team_id: 1)
+AssignedTeam.create(user_id: 2 ,team_id: 1)
+AssignedTeam.create(user_id: 3 ,team_id: 1)
+AssignedTeam.create(user_id: 4 ,team_id: 1)
+
+AssignedTeam.create(user_id: 5 ,team_id: 2)
+AssignedTeam.create(user_id: 6 ,team_id: 2)
+AssignedTeam.create(user_id: 7 ,team_id: 2)
+AssignedTeam.create(user_id: 8 ,team_id: 2)
+AssignedTeam.create(user_id: 9 ,team_id: 2)
+AssignedTeam.create(user_id: 4 ,team_id: 2)
+
+AssignedTeam.create(user_id: 10 ,team_id: 3)
+AssignedTeam.create(user_id: 11 ,team_id: 3)
+AssignedTeam.create(user_id: 12 ,team_id: 3)
+AssignedTeam.create(user_id: 4 ,team_id: 3)
+
+puts "Creating Team Admins ..."
+
+AssignedAdmin.create(user_id: 4 ,team_id: 1)
+AssignedAdmin.create(user_id: 4 ,team_id: 2)
+AssignedAdmin.create(user_id: 11 ,team_id: 3)
+AssignedAdmin.create(user_id: 7 ,team_id: 2)
+AssignedAdmin.create(user_id: 2 ,team_id: 1)
+AssignedAdmin.create(user_id: 10 ,team_id: 3)
+
 
 puts "Creating Columns ... "
 

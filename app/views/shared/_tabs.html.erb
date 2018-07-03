@@ -19,7 +19,7 @@
 
   <div class="tabs-content-container">
     <% team.each do |t| %>
-      <div class="tab-content active" id=<%=t.name%>>
+      <div class="tab-content active" id="<%=t.name.downcase%>">
         <%#= render 'shared/table', current_team: t%>
         <table id="indextable">
           <thead>
@@ -31,17 +31,17 @@
             </tr>
           </thead>
           <tbody>
-            <% @users = t.users %>
-            <% @users.each do |user| %>
-            <tr>
-              <td><%= user.first_name %></td>
-              <td><%= user.last_name %></td>
-              <td><%= user.username %></td>
-              <td><%= user.handy_nr %></td>
-              <td><%= link_to teams_path do %>
-                  <i class="fas fa-columns"></i>
-              <% end %></td>
-            </tr>
+            <% t.assigned_teams.each do |assT| %>
+              <% user = User.find(assT.user_id) %>
+              <tr>
+                <td><%= user.first_name %></td>
+                <td><%= user.last_name %></td>
+                <td><%= user.username %></td>
+                <td><%= user.handy_nr %></td>
+                <td><%= link_to teams_path do %>
+                    <i class="fas fa-columns"></i>
+                <% end %></td>
+              </tr>
             <% end %>
           </tbody>
         </table>

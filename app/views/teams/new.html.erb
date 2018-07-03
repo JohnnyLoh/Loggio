@@ -4,8 +4,17 @@
   <%= simple_form_for(@team) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.label "Pick admins: "%>
-    <%= f.input_field :admins, collection: @users, as: :check_boxes, label_method: :username,  label: false, value_method: :id, input_html: { multiple: true } %>
+
+    <div class="display-flex">
+      <div id="pick-admins">
+        <%= f.label "Pick admins: "%>
+        <%= f.input_field :assigned_admins, collection: @users, as: :check_boxes, label_method: :username,  label: false, value_method: :id, input_html: { multiple: true } %>
+      </div>
+      <div id="pick-users">
+        <%= f.label "Pick users: "%>
+        <%= f.input_field :assigned_teams, collection: @users, as: :check_boxes, label_method: :username,  label: false, value_method: :id, input_html: { multiple: true } %>
+      </div>
+    </div>
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>

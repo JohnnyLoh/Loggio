@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :columns
   has_many :cards
+  # has_many :teams
 
   has_many :assigned_teams, dependent: :destroy
   has_many :teams, through: :assigned_teams
@@ -15,4 +16,7 @@ class User < ApplicationRecord
 
   has_many :created_teams, class_name: 'Route'
   has_many :created_cards, class_name: 'Card'
+
+  has_many :assigned_admins, dependent: :destroy
+  has_many :teams, through: :assigned_admins
 end

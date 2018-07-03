@@ -11,7 +11,8 @@
         </tr>
       </thead>
       <tbody>
-        <% @team.users.each do |user| %>
+        <% @team.assigned_teams.each do |assT| %>
+          <% user = User.find(assT.user_id) %>
           <tr>
             <th class="fixed-side"><%= user.username %></th>
             <% @cards = [] %>
@@ -20,7 +21,18 @@
               <td>
                 <% @cards.each do |card| %>
                 <% if !card[0].nil? %>
-                    <%= card[0].name %>: <%= card[0].description%>
+                    <% card.each do |c| %>
+                      <table class="inner-table">
+                        <tr>
+                          <td class="td-1">
+                            <%= c.name %>:
+                          </td>
+                          <td class="td-2">
+                            <%= c.description%>
+                          </td>
+                        </tr>
+                      </table>
+                    <% end %>
                   <% end %>
                 <% end %>
               </td>

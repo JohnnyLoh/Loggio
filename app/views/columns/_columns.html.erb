@@ -26,10 +26,7 @@
                 <div class="display-flex" id="filter-input">
                   <%= simple_form_for(c, url: column_path(c), remote: true) do |f|%>
                     <%= label_tag "Choose team:" %>
-                    <%# @userteams.map {|team| team.name.capitalize} %>
                     <%= f.association :teams,label: false, collection: @userteams, as: :check_boxes%>
-                    <%#= label_tag "Assign Team 2" %>
-                    <%#= select_tag :user_teams, options_for_select(@userteams.collect{|u| [u.name.capitalize]})%>
                     <%= submit_tag "Assign", name: nil, class:"btn btn-primary btn-sm"%>
                   <% end %>
                 </div>
@@ -55,7 +52,7 @@
       <!-- <a class="card-link" href="#" ></a> -->
     </div>
   <% else %>
-    <div class="column column-block column-primary column-inverse column-not-shared" style="background-image: linear-gradient(rgba(1, 1, 1, 0.06), rgba(1, 1, 1, 0.35));">
+   <div class="column column-block column-primary column-inverse column-not-shared" style="background-image: linear-gradient(rgba(1, 1, 1, 0.06), rgba(1, 1, 1, 0.35));">
       <div class="column-description">
         <div class="column-category not-shared">
           <h2><%= c.name %></h2>
@@ -64,19 +61,47 @@
         <div class="column-txt">
           <p><%= c.description %></p>
         </div>
+
+        <div class="column-tab">
+          <% if policy(c).update? %>
+            <button class="column-tablinks" width="60">
+              <p><%= c.name %><i class="far fa-eye"></i></p>
+
+            </button>
+          <% end %>
+        </div>
+        <div class="column-tabs-content-container">
+          <div class="column-tab-content active" id="<%=c.name%>">
+            <% if policy(c).update? %>
+              <div class="display-flex">
+                <div class="display-flex" id="filter-input">
+                  <%= simple_form_for(c, url: column_path(c), remote: true) do |f|%>
+                    <%= label_tag "Choose team:" %>
+                    <%# @userteams.map {|team| team.name.capitalize} %>
+                    <%= f.association :teams,label: false, collection: @userteams, as: :check_boxes%>
+                    <%#= label_tag "Assign Team 2" %>
+                    <%#= select_tag :user_teams, options_for_select(@userteams.collect{|u| [u.name.capitalize]})%>
+                    <%= submit_tag "Assign", name: nil, class:"btn btn-primary btn-sm"%>
+                  <% end %>
+                </div>
+                <div id="button-column-delete">
+                  <% if policy(c).destroy? %>
+                    <%= link_to "", column_path(c), method: :delete, data: {:confirm => 'Sure to delete whole COLUMN?'}, class:"far fa-trash-alt" %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
         <div class="cards-box">
           <%= render 'shared/cards', current_column: c%>
         </div>
-      </div>
-
-      <img class="column-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-      <!-- <a class="card-link" href="#" ></a> -->
-        <div id="button-column">
-          <% if policy(c).destroy? %>
-            <%= link_to "", column_path(c), method: :delete, data: {:confirm => 'Are you sure?'}, class:"far fa-trash-alt" %>
-          <% end %>
+        <div>
           <%= link_to "", new_column_card_path(c), class:"fas fa-plus" %>
         </div>
+      </div>
+      <img class="column-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+      <!-- <a class="card-link" href="#" ></a> -->
     </div>
   <% end %>
 <% end %>

@@ -48,3 +48,39 @@
 }
 .clone thead, .clone tfoot{background:transparent;}
 
+// .inner-table{
+
+// }
+
+.inner-table tbody tr {
+  table-layout: fixed;
+  display: flex;
+  justify-content: space-between;
+  overflow-y: auto;
+  white-space: nowrap;
+  width: 100%
+}
+
+.inner-table tbody tr td {
+  width: 140px;
+}
+// .inner-table td {
+//   // flex-grow: 1;
+// }
+
+.td-1{
+  width: 60% !important;
+  overflow: auto;
+}
+
+.td-2{
+  width: 40% !important;
+  text-align: right;
+  overflow: visible;
+}
+
+// .main-table td {
+//   // overflow: scroll;
+//   // overflow:hidden;
+//   white-space:nowrap;
+// }

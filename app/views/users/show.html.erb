@@ -5,12 +5,25 @@
   <div class="display-flex" id="filter-input">
     <%= form_tag filtered_teams_path, method: "get", class: "form-inline", remote: true do %>
       <%= label_tag "Team" %>
-      <%= select_tag :team, options_for_select(current_user.teams.collect{|u| [u.name]}.push("All Teams"), "All Teams")%>
+      <%= select_tag :team, options_for_select(current_user.assigned_teams.collect{|asst| [asst.team.name]}.push("All Teams"), "All Teams")%>
       <%= submit_tag "Apply", name: nil, class:"btn btn-primary btn-sm"%>
     <% end %>
   </div>
-  <div class="display-flex" id="create-column">
-    <%= link_to "Create column", new_column_path, class: "btn btn-primary btn-sm" %>
+  <div id="create">
+    <%= link_to(new_column_path) do %>
+      <div class="display-flex btn btn-primary btn-sm">
+        <i class="fas fa-plus"></i>
+        <p>New Column</p>
+      </div>
+    <% end %>
+  </div>
+  <div id="create">
+    <%= link_to(new_team_path) do %>
+      <div class="display-flex btn btn-primary btn-sm">
+        <i class="fas fa-plus"></i>
+        <p>New Team</p>
+       </div>
+    <% end %>
   </div>
 </div>
 

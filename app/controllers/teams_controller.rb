@@ -1,11 +1,16 @@
 class TeamsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  # skip_before_action :authenticate_team!, only: :index
 
   def index
-    # @user = current_user
-    # @assigned_team = AssignedTeam.new
-    @team = policy_scope(Team).order(created_at: :asc)
-    authorize @team
+    # @teams = policy_scope(Team).order(created_at: :asc)
+    @assTs = policy_scope(AssignedTeam).where(user_id: current_user.id).order(created_at: :asc)
+
+    @team = []
+    @assTs.each do |assTs|
+      @team << assTs.team
+    end
+    # authorize @team
   end
 
   def show
@@ -17,8 +22,9 @@ class TeamsController < ApplicationController
     @team = Team.new
     @users = []
     current_user.teams.each do |team|
-      team.users.each do |user|
-        @users << user
+      team.assigned_teams.each do |a_team|
+        @thisuser = User.find(a_team.user_id)
+        @users << @thisuser
       end
     end
     authorize @team
@@ -26,15 +32,20 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(params_team)
-    @team.users << current_user
+    # @team.user = current_user
     authorize @team
     if @team.save
       puts "Team is saved ..."
-      params[:team][:admins].drop(1).each do |a_id|
-        @user = User.find(a_id)
-        @asst = AssignedTeam.create(user_id: @user.id, team_id: @team.id)
-        @team.assigned_teams << @asst
+      params[:team][:assigned_admins].drop(1).each do |a_id|
+        @assad = AssignedAdmin.create(user_id: a_id.to_i, team_id: @team.id)
+        # @team.assigned_admins << @assad
         puts "AssignedAdmin saved ... "
+      end
+      params[:team][:assigned_teams].drop(1).each do |u_id|
+        # @user = User.find(u_id)
+        @asst = AssignedTeam.create(user_id: u_id.to_i, team_id: @team.id)
+        # @team.assigned_teams << @asst
+        puts "AssignedTeam saved ... "
       end
       redirect_to users_show_path
     else
@@ -52,7 +63,7 @@ class TeamsController < ApplicationController
   private
 
   def params_team
-    params.require(:team).permit(:name, :description, :admin)
+    params.require(:team).permit(:name, :description)
   end
 
 end
